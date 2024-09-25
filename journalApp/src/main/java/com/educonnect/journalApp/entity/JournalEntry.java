@@ -3,15 +3,15 @@ package com.educonnect.journalApp.entity;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Document(collection = "journal_entries")
-@Getter
-@Setter
 
+@Data
+@NoArgsConstructor
 public class JournalEntry {
     private ObjectId id;
     private String title;

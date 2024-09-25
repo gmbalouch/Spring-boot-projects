@@ -8,10 +8,9 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import com.mongodb.lang.NonNull;
 
 import lombok.Data;
-import java.time.LocalDateTime;
 import java.util.*;
 
-@Document(collection = "users")
+@Document(collection = "User")
 @Data
 
 public class User {
