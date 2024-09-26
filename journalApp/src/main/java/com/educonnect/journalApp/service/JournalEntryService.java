@@ -3,6 +3,7 @@ package com.educonnect.journalApp.service;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.educonnect.journalApp.entity.JournalEntry;
 import com.educonnect.journalApp.entity.User;
@@ -18,6 +19,7 @@ public class JournalEntryService {
     @Autowired
     private UserService userService;
 
+    @Transactional
     public void saveEntry(JournalEntry journalEntry, String userName) {
 
         User user = userService.findByUser(userName); // confirming/ searching if user exists/ giving user Along with
