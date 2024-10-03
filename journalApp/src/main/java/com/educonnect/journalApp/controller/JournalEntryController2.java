@@ -32,9 +32,12 @@ public class JournalEntryController2 {
     @Autowired
     private UserService userService;
 
-    @GetMapping("{userName}")
+    @GetMapping("/{userName}")
     public ResponseEntity<?> getAllEntriesOfUser(@PathVariable String userName) {
         User user = userService.findByUser(userName);
+        if (user == null) {
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND); // Handle user not found case
+        }
 
         List<JournalEntry> entries = user.getJournalEntries();
         if (entries != null && !entries.isEmpty()) {

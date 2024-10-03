@@ -9,12 +9,15 @@ import com.educonnect.journalApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.net.Authenticator;
 import java.util.List;
 
 @RestController
@@ -24,21 +27,29 @@ public class userController2 {
     @Autowired
     private UserService userService;
 
-    @GetMapping()
-    public List<User> getAll() {
-        return userService.getEntries();
+    @GetMapping
+    public String testing() {
+        return "Working ";
     }
 
-    @PostMapping()
-    public ResponseEntity<?> createUser(@RequestBody User user) {
-        userService.saveEntry(user);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    // @PutMapping()
+    // public String update(@RequestBody User user) {
+    // String userName = user.getUserName();
+    // return "Available user:" + userName;
 
-    }
+    // }
 
-    @PutMapping("/{userName}")
-    public ResponseEntity<?> updateUser(@RequestBody User user, @PathVariable String userName) {
-        User oldUser = userService.findByUser(userName);
+    @PutMapping()
+
+    public ResponseEntity<?> updateUser(@RequestBody User user) {
+        System.out.println("update method");
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("working step2");
+        String authenticatedUserName = authentication.getName();
+
+        System.out.println("-----------------" + authenticatedUserName);
+
+        User oldUser = userService.findByUser(authenticatedUserName);
         if (oldUser != null) {
             oldUser.setUserName(user.getUserName());
             oldUser.setPassword(user.getPassword());

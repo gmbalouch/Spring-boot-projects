@@ -2,10 +2,13 @@ package com.educonnect.journalApp.service;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.educonnect.journalApp.entity.User;
 import com.educonnect.journalApp.repository.UserRespository;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +18,13 @@ public class UserService {
     @Autowired
     private UserRespository userRespository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public void saveEntry(User user) {
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setRoles(Arrays.asList("USER"));
+        user.setPassword(encodedPassword);
         userRespository.save(user);
     }
 
