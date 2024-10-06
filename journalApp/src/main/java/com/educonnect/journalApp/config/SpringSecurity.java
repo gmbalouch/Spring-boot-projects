@@ -11,23 +11,22 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-
 public class SpringSecurity {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // Disable CSRF, enable stateless session, and configure authorization
         http
-                .csrf(csrf -> csrf.disable()) // Disable CSRF for APIs
+                .csrf(Customizer -> Customizer.disable()) // Disable CSRF for APIs
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Stateless session for APIs
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/journal/**", "/user/**", "/public/**").permitAll() // Publicly accessible URL
+                        .requestMatchers("/journal/**", "/user/**", "/public/**").permitAll() // Publicly accessible
+                                                                                              // URLs
                         .anyRequest().authenticated() // All other URLs require authentication
                 )
                 .httpBasic(); // Use Basic Auth for APIs
-        // http.csrf().disable();
 
         return http.build();
     }
@@ -35,7 +34,5 @@ public class SpringSecurity {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-
     }
-
 }
