@@ -72,7 +72,7 @@ public class userController2 {
             }
 
             // Save the updated user
-            userService.saveEntry(oldUser);
+            userService.saveNewEntry(oldUser);
 
             // Return success response
             return new ResponseEntity<>(oldUser, HttpStatus.OK);

@@ -30,7 +30,7 @@ public class JournalEntryService {
             user.getJournalEntries().add(saved); // saving jounral entry in user which is saved current, and it is just
                                                  // a
                                                  // list
-            userService.saveEntry(user);
+            userService.saveUser(user);
 
         } else {
             System.out.println("USER not found: " + userName);
@@ -51,10 +51,29 @@ public class JournalEntryService {
         return journalrRespository.findById(id);
     }
 
-    public void deleteEntry(ObjectId id, String userName) {
-        User user = userService.findByUser(userName);
-        user.getJournalEntries().removeIf(x -> x.getId().equals(id));
-        userService.saveEntry(user);
-        journalrRespository.deleteById(id);
+    @Transactional
+    public boolean deleteEntry(ObjectId id, String userName) {
+        boolean removed = false;
+        try {
+
+            User user = userService.findByUser(userName);
+            removed = user.getJournalEntries().removeIf(x -> x.getId().equals(id));
+
+            if (removed) {
+                userService.saveUser(user);
+                journalrRespository.deleteById(id);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+            throw new RuntimeException("An error occured while deleting the entity ", e);
+        }
+
+        return removed;
+
     }
+
+    // public List<JournalEntry> findByUserName(String userName) {
+
+    // }
 }

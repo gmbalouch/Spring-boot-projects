@@ -21,10 +21,14 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public void saveEntry(User user) {
+    public void saveNewEntry(User user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setRoles(Arrays.asList("USER"));
         user.setPassword(encodedPassword);
+        userRespository.save(user);
+    }
+
+    public void saveUser(User user) {
         userRespository.save(user);
     }
 
