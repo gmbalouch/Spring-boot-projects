@@ -23,7 +23,8 @@ public class SpringSecurity {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/journal/**", "/user/**", "/public/**").permitAll() // Publicly accessible
-                                                                                              // URLs
+                        // URLs
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated() // All other URLs require authentication
                 )
                 .httpBasic(); // Use Basic Auth for APIs

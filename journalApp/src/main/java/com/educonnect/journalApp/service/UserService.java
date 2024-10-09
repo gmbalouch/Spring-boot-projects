@@ -28,6 +28,13 @@ public class UserService {
         userRespository.save(user);
     }
 
+    public void saveAdmin(User user) {
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setRoles(Arrays.asList("USER", "ADMIN"));
+        user.setPassword(encodedPassword);
+        userRespository.save(user);
+    }
+
     public void saveUser(User user) {
         userRespository.save(user);
     }

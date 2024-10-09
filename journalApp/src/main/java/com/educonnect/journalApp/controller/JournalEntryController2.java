@@ -40,7 +40,7 @@ public class JournalEntryController2 {
         return "Working";
     }
 
-    @GetMapping("/getEntities")
+    @GetMapping
     public ResponseEntity<?> getAllEntriesOfUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String authenticatedUserName = authentication.getName();
