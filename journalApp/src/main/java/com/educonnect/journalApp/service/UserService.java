@@ -1,6 +1,8 @@
 package com.educonnect.journalApp.service;
 
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -21,11 +23,22 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public void saveNewEntry(User user) {
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setRoles(Arrays.asList("USER"));
-        user.setPassword(encodedPassword);
-        userRespository.save(user);
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
+    public boolean saveNewEntry(User user) {
+        try {
+            String encodedPassword = passwordEncoder.encode(user.getPassword());
+            user.setRoles(Arrays.asList("USER"));
+            user.setPassword(encodedPassword);
+            userRespository.save(user);
+
+            return true;
+        } catch (Exception e) {
+            logger.info("Hahahah");
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
     public void saveAdmin(User user) {

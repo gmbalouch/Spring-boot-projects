@@ -22,10 +22,13 @@ public class UserDetailsServiceImp implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
 
+        // Ensure roles are properly initialized
+        String[] roles = user.getRoles() != null ? user.getRoles().toArray(new String[0]) : new String[0];
+
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUserName())
                 .password(user.getPassword())
-                .roles(user.getRoles().toArray(new String[0]))
+                .roles(roles) // This must not be null
                 .build();
     }
 }

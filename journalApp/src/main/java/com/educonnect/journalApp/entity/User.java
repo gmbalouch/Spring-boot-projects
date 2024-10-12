@@ -7,11 +7,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.index.Indexed;
 import com.mongodb.lang.NonNull;
 
+import lombok.Builder;
 import lombok.Data;
 import java.util.*;
 
 @Document(collection = "User")
 @Data
+@Builder
 
 public class User {
     @Id

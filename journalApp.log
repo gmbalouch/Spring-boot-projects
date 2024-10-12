@@ -1,0 +1,10 @@
+24-10-12 18:53:44.169 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.PublicController#createUser(User) 
+24-10-12 18:53:44.174 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.PublicController#createUser(User) 
+24-10-12 18:53:44.177 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.PublicController#createUser(User) 
+24-10-12 18:53:44.184 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - POST "/public/create-user", parameters={} 
+24-10-12 18:53:44.187 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.PublicController#createUser(User) 
+24-10-12 18:53:44.216 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [User(id=null, userName=Gm, password=Gm, journalEntries=null, roles=null)] 
+24-10-12 18:53:44.585 [http-nio-8080-exec-2] INFO  c.e.journalApp.service.UserService - Hahahah 
+24-10-12 18:53:44.660 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json] 
+24-10-12 18:53:44.662 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [User(id=null, userName=Gm, password=$2a$10$Ze4FbEr/Q6iDXRS7xZLTI.arv/5GwQrUNjr47Cmj2bUtI9oDQfF9m, jo (truncated)...] 
+24-10-12 18:53:44.666 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK 
