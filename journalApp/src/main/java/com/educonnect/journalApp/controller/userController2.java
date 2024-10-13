@@ -3,8 +3,10 @@ package com.educonnect.journalApp.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.educonnect.journalApp.apiResponse.WeatherResponse;
 import com.educonnect.journalApp.entity.User;
 import com.educonnect.journalApp.service.UserService;
+import com.educonnect.journalApp.service.WeatherService;
 
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,18 +37,8 @@ public class userController2 {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping
-    public String testing() {
-        return "Working ";
-    }
-
-    // @GetMapping("/test")
-    // public String test() {
-    // Authentication authentication =
-    // SecurityContextHolder.getContext().getAuthentication();
-    // String authenticatedUserName = authentication.getName();
-    // return authenticatedUserName;
-    // }
+    @Autowired
+    private WeatherService weatherService;
 
     @PutMapping()
     public ResponseEntity<?> updateUser(@RequestBody User user) {
@@ -80,6 +72,18 @@ public class userController2 {
 
         // If the user is not found, return no content
         return new ResponseEntity<>("User not found", HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> greetings() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        WeatherResponse weatherResponse = weatherService.getWeather("Islamabad,Pakistan");
+        String greeting = "";
+        if (weatherResponse != null) {
+            greeting = " weather feels like " + weatherResponse.getCurrent().feelslike;
+        }
+
+        return new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
     }
 
 }
