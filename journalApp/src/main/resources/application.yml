@@ -1,0 +1,15 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://gmbaloch898:gnGFOiyUSM5UJg8z@cluster0.5epvg.mongodb.net/journaldb?retryWrites=true&w=majority
+      database: journaldb
+      auto-index-creation: true
+  security:
+    user:
+      name: admin
+      password: admin123
+debug: true
+
+weather:
+    api: 
+        key: 260f446b4edbc43198d5ff875860c051

@@ -8,8 +8,7 @@ import com.educonnect.journalApp.entity.User;
 import com.educonnect.journalApp.service.UserService;
 import com.educonnect.journalApp.service.WeatherService;
 
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,18 +16,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.net.Authenticator;
-import java.util.List;
-
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class userController2 {
 
     @Autowired
@@ -78,6 +72,7 @@ public class userController2 {
     public ResponseEntity<?> greetings() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         WeatherResponse weatherResponse = weatherService.getWeather("Islamabad,Pakistan");
+
         String greeting = "";
         if (weatherResponse != null) {
             greeting = " weather feels like " + weatherResponse.getCurrent().feelslike;
