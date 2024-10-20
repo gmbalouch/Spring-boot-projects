@@ -16,6 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class AppCache {
+
+    public enum keys {
+        WEATHER_API;
+    }
+
     public Map<String, String> APP_CACHE = new HashMap<>();
 
     @Autowired

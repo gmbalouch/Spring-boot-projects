@@ -27,7 +27,8 @@ public class WeatherService {
 
     public WeatherResponse getWeather(String city) {
         // log.info("APP_CACHE content: " +);
-        String finalAPI = appCache.APP_CACHE.get("weather_api").replace("<city>", city).replace("<apiKey>", apiKey);
+        String finalAPI = appCache.APP_CACHE.get(AppCache.keys.WEATHER_API.toString()).replace("<city>", city)
+                .replace("<apiKey>", apiKey);
         log.info(finalAPI);
         log.info("Final API URL: " + finalAPI); // Check if it's correct.
 

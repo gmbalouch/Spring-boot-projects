@@ -5,10 +5,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.educonnect.journalApp.apiResponse.WeatherResponse;
 import com.educonnect.journalApp.entity.User;
+import com.educonnect.journalApp.repository.UserRepositoryImpl;
 import com.educonnect.journalApp.service.UserService;
 import com.educonnect.journalApp.service.WeatherService;
 
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,6 +36,9 @@ public class userController2 {
 
     @Autowired
     private WeatherService weatherService;
+
+    @Autowired
+    private UserRepositoryImpl userRepositoryImpl;
 
     @PutMapping()
     public ResponseEntity<?> updateUser(@RequestBody User user) {
@@ -79,6 +85,20 @@ public class userController2 {
         }
 
         return new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
+    }
+
+    @GetMapping("/SAUsers")
+    public ResponseEntity<?> getSAUsers() {
+
+        List<User> users = userRepositoryImpl.getUserForSA();
+
+        StringBuilder SAUsers = new StringBuilder();
+
+        for (User user : users) {
+            SAUsers.append(user.getUserName() + "\n");
+        }
+
+        return new ResponseEntity<>("Users for Sentimental Analyses are  \n" + SAUsers.toString(), HttpStatus.OK);
     }
 
 }
