@@ -1,19 +1,11 @@
-24-10-21 18:12:38.515 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
-24-10-21 18:12:38.518 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
-24-10-21 18:12:38.519 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver 
-24-10-21 18:12:38.520 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver 
-24-10-21 18:12:38.521 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver 
-24-10-21 18:12:38.523 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@678396d8 
-24-10-21 18:12:38.528 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@52d965e9 
-24-10-21 18:12:38.530 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data 
-24-10-21 18:12:38.537 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 18 ms 
-24-10-21 18:12:39.198 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.userController2#sendEmail(Map) 
-24-10-21 18:12:39.203 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.userController2#sendEmail(Map) 
-24-10-21 18:12:39.214 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - POST "/user/sendEmail", parameters={} 
-24-10-21 18:12:39.217 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.userController2#sendEmail(Map) 
-24-10-21 18:12:39.344 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [{to=gmbaloch898@gmail.com, subject=Test Email, body=This is a test email.}] 
-24-10-21 18:12:39.362 [http-nio-8080-exec-1] INFO  c.e.j.controller.userController2 - To gmbaloch898@gmail.com 
-24-10-21 18:12:42.635 [http-nio-8080-exec-1] INFO  c.e.journalApp.service.EmailService - To gmbaloch898@gmail.com 
-24-10-21 18:12:42.649 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json] 
-24-10-21 18:12:42.651 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing ["Email sent successfully true"] 
-24-10-21 18:12:42.664 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK 
+24-10-21 22:15:43.309 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.EmailController#sentSentiment() 
+24-10-21 22:15:43.313 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.EmailController#sentSentiment() 
+24-10-21 22:15:43.314 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.EmailController#sentSentiment() 
+24-10-21 22:15:43.316 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.EmailController#sentSentiment() 
+24-10-21 22:15:43.327 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/mail", parameters={} 
+24-10-21 22:15:43.338 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.educonnect.journalApp.controller.EmailController#sentSentiment() 
+24-10-21 22:15:46.981 [http-nio-8080-exec-7] INFO  c.e.journalApp.service.EmailService - To gk0231480@gmail.com 
+24-10-21 22:15:49.792 [http-nio-8080-exec-7] INFO  c.e.journalApp.service.EmailService - To gmbaloch@gmail.com 
+24-10-21 22:15:49.796 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json] 
+24-10-21 22:15:49.798 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing ["Successfully SendSentiment Mail"] 
+24-10-21 22:15:49.802 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK 

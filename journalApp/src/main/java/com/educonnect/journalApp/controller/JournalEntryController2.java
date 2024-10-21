@@ -61,7 +61,6 @@ public class JournalEntryController2 {
     public ResponseEntity<JournalEntry> createEntry(@RequestBody JournalEntry jEntry) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        System.out.println("Received request with userName: " + userName);
 
         try {
             jEntry.setDate(LocalDateTime.now());

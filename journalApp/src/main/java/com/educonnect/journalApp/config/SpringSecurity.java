@@ -22,7 +22,8 @@ public class SpringSecurity {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Stateless session for APIs
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/journal/**", "/user/**", "/public/**").permitAll() // Publicly accessible
+                        .requestMatchers("/journal/**", "/user/**", "/public/**", "/mail/**").permitAll() // Publicly
+                                                                                                          // accessible
                         // URLs
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated() // All other URLs require authentication
