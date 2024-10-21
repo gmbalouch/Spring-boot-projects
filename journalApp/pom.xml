@@ -54,6 +54,12 @@
    		 	<artifactId>spring-boot-starter-security</artifactId> <!-- Only if you're using Spring Security -->
 		</dependency>
 
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+   		 	<artifactId>spring-boot-starter-mail</artifactId> 
+		</dependency>
+
+
 	</dependencies>
 
 	<build>

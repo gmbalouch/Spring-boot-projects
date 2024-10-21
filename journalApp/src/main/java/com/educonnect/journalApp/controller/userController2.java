@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.educonnect.journalApp.apiResponse.WeatherResponse;
 import com.educonnect.journalApp.entity.User;
 import com.educonnect.journalApp.repository.UserRepositoryImpl;
+import com.educonnect.journalApp.service.EmailService;
 import com.educonnect.journalApp.service.UserService;
 import com.educonnect.journalApp.service.WeatherService;
 
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -27,6 +30,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/user")
 @Slf4j
 public class userController2 {
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private UserService userService;
@@ -99,6 +105,26 @@ public class userController2 {
         }
 
         return new ResponseEntity<>("Users for Sentimental Analyses are  \n" + SAUsers.toString(), HttpStatus.OK);
+    }
+
+    @PostMapping("/sendEmail")
+    public ResponseEntity<?> sendEmail(@RequestBody Map<String, String> emailDetails) {
+        String to = emailDetails.get("to");
+        String subject = emailDetails.get("subject");
+        String body = emailDetails.get("body");
+
+        log.info("To " + to);
+        if (to == null || subject == null || body == null) {
+            return new ResponseEntity<>("Email details are incomplete", HttpStatus.BAD_REQUEST);
+        }
+
+        try {
+            Boolean send = emailService.sendEmail(to, subject, body);
+            return new ResponseEntity<>("Email sent successfully " + send, HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("Error sending email: ", e);
+            return new ResponseEntity<>("Failed to send email", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
